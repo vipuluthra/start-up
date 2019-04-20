@@ -13,8 +13,9 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = 'vipul'
 api = Api(app)
 
-
-
+@app.route('/')
+def hello_world():
+	return 'hello world'
 
 
 api.add_resource(Store, '/store/<string:name>')
