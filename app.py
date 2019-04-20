@@ -15,7 +15,7 @@ api = Api(app)
 
 @app.route('/')
 def hello_world():
-	return 'hello world'
+	return 'anushka is a beautiful girl. she should always respect vipul.'
 
 
 api.add_resource(Store, '/store/<string:name>')
