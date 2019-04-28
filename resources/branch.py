@@ -11,7 +11,7 @@ class Branch(Resource):
 
     def get(self, id):
         branch = BranchModel.find_by_id(id)
-        if store:
+        if branch:
             return branch.json()
         return {'message': 'Branch not found'}, 404                   
 
@@ -19,11 +19,14 @@ class Branch(Resource):
         if BranchModel.find_by_id(id):
             return {'message': "A branch with id '{}' already exists.".format(id)}, 400
 
-        branch = BranchModel(id)
+        data = Branch.parser.parse_args()
+
+        branch = BranchModel(id, **data)
+
         try:
             branch.save_to_db()
         except:
-            return {"message": "An error occurred creating the branch."}, 500
+            return {"message": "An error occurred inserting the branch."}, 500
 
         return branch.json(), 201
 
