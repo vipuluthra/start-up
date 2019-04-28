@@ -24,7 +24,11 @@ api.add_resource(Store, '/store/<string:name>')
 api.add_resource(StoreList, '/stores')
 api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
-
+api.add_resource(UserRegister, '/register')
+api.add_resource(Brand, '/brand/<string:name>')
+api.add_resource(BrandList, '/brands')
+api.add_resource(Branch, '/branch/<string:id>')
+api.add_resource(BranchList, '/branches')
 
 if __name__ == '__main__':
     from db import db
