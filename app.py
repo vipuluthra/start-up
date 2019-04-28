@@ -6,7 +6,10 @@ from flask_restful import Api
 
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
-
+from resources.user import UserRegister
+from resources.branch import Branch, BranchList
+from resources.brand import Brand, BrandList
+from resources.product import Product, ProductList
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
