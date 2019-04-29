@@ -20,7 +20,7 @@ class UserModel(db.Model):
     	self.current_location = current_location
     	self.phone_number = phone_number
     	self.email = email
-		self.username = username
+	self.username = username
         self.password = password
         self.created_at = created_at
         self.updated_at = updated_at
