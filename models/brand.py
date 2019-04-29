@@ -1,4 +1,5 @@
 from db import db
+from datetime import datetime
 
 class BrandModel(db.Model):
     __tablename__ = 'brands'
@@ -6,8 +7,10 @@ class BrandModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.column(db.string(80))
     description = db.column(db.string(80))
-    created_at = db.Column(db.Date)				#
-    updated_at = db.Column(db.Date)				#
+    created_at = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
+    updated_at = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
 
     branches = db.relationship('BranchModel', lazy='dynamic')
 

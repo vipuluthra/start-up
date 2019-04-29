@@ -7,8 +7,8 @@ class ProductModel (db.Model):
     branch_id = db.column(db.Integer, db.ForeignKey('branches.id'))
     branch = db.relationship('BranchModel')
 
-    starting_from = db.column(db.Integer)		#
-    name = db.column(db.string)
+    starting_from = db.column(db.Integer)		#price starting from 
+    name = db.column(db.string)                 
     sale_percentage = db.column(db.Integer)
     product_image = db.Column() 			#
 

@@ -1,4 +1,5 @@
 from db import db 
+from datetime import datetime
 
 class BranchModel(db.Model):
     __tablename__ = 'branches'
@@ -10,15 +11,20 @@ class BranchModel(db.Model):
 
     products = db.relationship('ProductModel', lazy='dynamic')
 
-    image = db.Column() 									#
+    image = db.Column() 		#
+
     address = db.column(db.string(80))
     phone_number = db.Column(db.Integer)
-    factory_outlet = db.column()			#
-    has_sale = db.column()					#
-    salestart_date = db.column()			#
-    saleend_date = db.Column()				#
-    created_at = db.Column(db.Date)				#
-    updated_at = db.Column(db.Date)				#
+    factory_outlet = db.column(db.Boolean, unique=False, default=True)		
+    has_sale = db.column(db.Boolean, unique=False, default=True)					
+    salestart_date = db.column(db.DateTime, nullable=False,
+        default=datetime.utcnow)			
+    saleend_date = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
+    created_at = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
+    updated_at = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
     sale_promotion_image = db.column()			#
 
     def __init__(self, brand_id, image, address, phone_number, factory_outlet,has_sale,salestart_date,saleend_date, created_at, updated_at, sale_promotion_image):

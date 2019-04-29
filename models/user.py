@@ -1,4 +1,5 @@
 from db import db
+from datetime import datetime
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -8,11 +9,13 @@ class UserModel(db.Model):
     lastname = db.column(db.string(80))
     current_location = db.column(db.string(80))
     phone_number = db.Column(db.Integer)
-    email = db.Column(db.string(80))				
-    username = db.Column(db.String(80))
+    email = db.Column(db.string(80) unique=True, nullable=False)				
+    username = db.Column(db.String(80) unique=True, nullable=False)
     password = db.Column(db.String(80))
-    created_at = db.Column(db.Integer)				#
-    updated_at = db.Column(db.Integer)				#
+    created_at = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
+    updated_at = db.Column(db.DateTime, nullable=False,
+        default=datetime.utcnow)				
 
     def __init__(self, firstname, lastname, current_location, phone_number, email, username, password, created_at, updated_at):
     	self.firstname = firstname
