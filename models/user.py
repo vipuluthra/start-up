@@ -9,7 +9,7 @@ class UserModel(db.Model):
     lastname = db.column(db.string(80))
     current_location = db.column(db.string(80))
     phone_number = db.Column(db.Integer)
-    email = db.Column(db.string(80) unique=True, nullable=False)				
+    e_mail = db.Column(db.string(80) unique=True, nullable=False)				
     username = db.Column(db.String(80) unique=True, nullable=False)
     password = db.Column(db.String(80))
     created_at = db.Column(db.DateTime, nullable=False,
